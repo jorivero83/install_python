@@ -35,11 +35,6 @@ Installing a package:
 python39 /usr/bin/pip3.9 install boto3
 ```
 
-Installing `QueryParserVA`: 
-```shell
-python39 -m pip install QueryParserVA-0.1.2.tar.gz
-```
-
 ### 1.2 Install python from source:
 
 Install some packages required to build:
@@ -75,4 +70,14 @@ make -j 12
 Install
 ```shell
 sudo make altinstall
+```
+
+## 2. Copy/download `QueryParserVA` from local to server
+```shell
+scp -i ~/.ssh/va_key_rsa /home/jrd/Documents/parse_query_json/src/dist/QueryParserVA-0.1.2.tar.gz ubuntu@50.112.136.141:
+```
+
+Installing `QueryParserVA`: 
+```shell
+python39 -m pip install QueryParserVA-0.1.2.tar.gz
 ```
