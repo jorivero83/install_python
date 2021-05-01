@@ -72,7 +72,7 @@ Install
 sudo make altinstall
 ```
 
-## 2. Copy/download `QueryParserVA` from local to server
+### 1.3 Copy/download `QueryParserVA` from local to server
 ```shell
 scp -i ~/.ssh/va_key_rsa /home/jrd/Documents/parse_query_json/src/dist/QueryParserVA-0.1.2.tar.gz ubuntu@50.112.136.141:
 ```
@@ -80,4 +80,31 @@ scp -i ~/.ssh/va_key_rsa /home/jrd/Documents/parse_query_json/src/dist/QueryPars
 Installing `QueryParserVA`: 
 ```shell
 python39 -m pip install QueryParserVA-0.1.2.tar.gz
+```
+
+## 2. Installing R
+
+### 2.1 Install R
+
+```shell
+# update indices
+sudo apt update -qq
+# install two helper packages we need
+sudo apt install --no-install-recommends software-properties-common dirmngr
+# import the signing key (by Michael Rutter) for these repo
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+# add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+# sudo apt-get install --no-install-recommends r-base
+```
+
+### 2.2 Install RStudio Server
+
+```shell
+sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.1093-amd64.deb
+sudo gdebi rstudio-server-1.3.1093-amd64.deb
+rstudio-server status
 ```
